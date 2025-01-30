@@ -1,8 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+
 from .models import Category
-admin.site.register(Category)
+# admin.site.register(Category)
+
 
 from .models import Topping
 admin.site.register(Topping)
@@ -11,10 +12,26 @@ admin.site.register(Topping)
 from .models import Wrapper
 admin.site.register(Wrapper)
 
+
 from .models import IceCream
 # admin.site.register(IceCream)
 
 admin.site.empty_value_display = 'Не задано'
+
+class IceCreamInline(admin.TabularInline):
+    model = IceCream
+    extra = 0
+
+class CategoryAdmin(admin.ModelAdmin):
+    inlines = (
+        IceCreamInline,
+    )
+    list_display = (
+        'title',
+    )
+
+admin.site.register(Category, CategoryAdmin)
+
 
 class IceCreamAdmin(admin.ModelAdmin):
     list_display = (
@@ -38,5 +55,3 @@ class IceCreamAdmin(admin.ModelAdmin):
     filter_horizontal = ('toppings',)
 
 admin.site.register(IceCream, IceCreamAdmin)
-
-...
