@@ -1,3 +1,4 @@
+# type: ignore
 from django.db import models
 
 from core.models import PublishedModel
@@ -37,6 +38,7 @@ class Wrapper(PublishedModel):
         verbose_name='Название',
         help_text='Уникальное название обёртки, не более 256 символов'
     )
+
     class Meta:
         verbose_name = 'объект «Обёртка»'
         verbose_name_plural = 'Обёртки'
@@ -68,11 +70,12 @@ class IceCream(PublishedModel):
         default=100,
         verbose_name='Порядок отображения'
     )
-    price = models.DecimalField(max_digits=5, decimal_places=2) 
+    price = models.DecimalField(max_digits=5, decimal_places=2)
 
     class Meta:
         verbose_name = 'мороженое'
         verbose_name_plural = 'Мороженое'
+        ordering = ('output_order', 'title')
 
     def __str__(self):
         return self.title

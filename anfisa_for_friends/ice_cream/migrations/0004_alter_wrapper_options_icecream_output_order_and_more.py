@@ -12,22 +12,27 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='wrapper',
-            options={'verbose_name': 'объект «Обёртка»', 'verbose_name_plural': 'Обёртки'},
+            options={'verbose_name': 'объект «Обёртка»',
+                     'verbose_name_plural': 'Обёртки'},
         ),
         migrations.AddField(
             model_name='icecream',
             name='output_order',
-            field=models.PositiveSmallIntegerField(default=100, verbose_name='Порядок отображения'),
+            field=models.PositiveSmallIntegerField(
+                default=100, verbose_name='Порядок отображения'),
         ),
         migrations.AddField(
             model_name='icecream',
             name='price',
-            field=models.DecimalField(decimal_places=2, default=0, max_digits=5),
+            field=models.DecimalField(
+                decimal_places=2, default=0, max_digits=5),
             preserve_default=False,
         ),
         migrations.AlterField(
             model_name='wrapper',
             name='title',
-            field=models.CharField(help_text='Уникальное название обёртки, не более 256 символов', max_length=256, verbose_name='Название'),
+            field=models.CharField(
+                help_text='Уникальное название обёртки, не более 256 символов',
+                max_length=256, verbose_name='Название'),
         ),
     ]
