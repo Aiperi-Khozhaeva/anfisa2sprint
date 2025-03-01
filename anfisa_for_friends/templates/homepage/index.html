@@ -2,33 +2,11 @@
 {% block title %}
   Анфиса для друзей. Главная
 {% endblock %}
-
 {% block content %}
   <h1 class="pb-2 mb-0">Главная страница</h1>
-  {% comment %} {{ ice_cream_list }} {% endcomment %}
-
-  
-  {% for ice_cream in ice_cream_list %}
-  <ul>
-    <h3> {{ ice_cream.title }} </h3>
-    <p> ID: {{ ice_cream.id }} </p>
-    {% comment %} <li>Опубликовано: {{ ice_cream.is_published }}</li>
-    <li>На главную: {{ ice_cream.is_on_main }}</li> {% endcomment %}
-    {{ ice_cream.description }}
-    {% comment %} <li>Описание: {{ ice_cream.description }}</li>
-    <li>FK wrapper: {{ ice_cream.wrapper_id }}</li>
-    <li>FK category: {{ ice_cream.category_id }}</li> {% endcomment %}
-  </ul>
-  {% endfor %} 
-
-
-{% comment %}  ============================================== {% endcomment %}
-
-
-  {% comment %} {% for category in categories %}  
-    <p>ID: {{ category.id }}</p>
-    <p>{{ category.output_order }}</p>
-    <p>{{ category.title }}</p>  
-  {% endfor %}  {% endcomment %}
-
+  <div class="row">
+    {% for ice_cream in ice_cream_list %}
+      {% include "includes/ice_cream_card.html" %}
+    {% endfor %}
+  </div>
 {% endblock %}
